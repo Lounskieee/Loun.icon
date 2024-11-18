@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Personal Website | Loun.Icon 
+    </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header" style=" background-color:black;">
+        <div class="logo">
+         <a href="#"><img src="images/image 1.png" alt="logo">Loun.Icon</a>
+        </div>
+        <nav class="navbar">
+           <ul class="pcbar">
+            <li class="hideOnMobile"><a href="index.html">Home</a></li>
+            <li class="hideOnMobile"><a href="About.html">About</a></li>
+            <li class="hideOnMobile"><a href="Portfolio.html">Portfolio</a></li>
+            <li class="hideOnMobile"><a href="https://facebook.com/Loun.icon">Facebook Page</a></li>
+            <li class="hideOnMobile"><a href="https://web.facebook.com/ESPERO.JOHNSHERLOUNBUENCONSEJO/">Main Account</a></li>
+            <li onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+           </ul> 
+
+           <ul class="sidebar">
+            <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="Portfolio.html">Portfolio</a>
+            <a href="https://facebook.com/Loun.icon">Facebook Page</a>
+            <a href="https://web.facebook.com/ESPERO.JOHNSHERLOUNBUENCONSEJO/">Main Account</a>
+           </ul>
+        </nav>
+        <script>
+            function showSidebar(){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+            function hideSidebar(){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+        </script>
+
+    </header>
+    <hr>
+
+    <main class="text">
+        <div class="wrapper">
+        <h1> About Me</h1>
+        <br>
+            <div class="word">
+             <p> <b style="color: aquamarine;">JOHN SHERLOUN ESPERO</b> <br>
+                🎨 Passionate Graphic Designer | Specialization in Logo design | Free-hand Artist
+                <br>
+                <br>
+                <b style="color: aquamarine;">Who Am I?</b><br>
+                "I’m John Sherloun, a dedicated graphic designer with a flair for transforming ideas into captivating visuals. My journey began by coincidence, as I was just starting to learn video editing. For me, logo design is much easier than video editing, but creating and building ideas is the harder part. I believe it’s up to you to push yourself to the limit to create IDEALISTIC AND UNIQUE designs."
+                <br>
+                <br>
+                <b style="color: aquamarine;">What Drives Me?</b><br>
+                <br>
+                🌟 Creativity: I thrive on pushing boundaries and thinking outside the box. Whether it’s a logo, a banners, or a social media campaign, I love infusing each project with fresh, innovative ideas.
+                <br>
+                <br>
+                🎯 Purpose: Design isn’t just about aesthetics; it’s about solving problems. I’m passionate about creating designs that resonate with the audience, convey a message, and drive results.
+                <br>
+                <br>
+                🌈 Color Obsessed: Colors have a language of their own. I’m fascinated by their psychology and how they evoke emotions.
+                <br>
+                <br>
+                <b style="color: aquamarine;">My Superpowers:</b><br><br>
+                🔍 Attention to Detail: Pixel-perfect precision is my mantra. I obsess over alignment, typography, and that elusive white space.
+                <br>
+                <br>
+                🎨 Versatility: From minimalist elegance to bold and quirky, I adapt my style to suit each project’s unique needs.
+                <br>
+                <br>
+                🚀 Collaboration: I thrive in creative partnerships. Let’s brainstorm and bring visions to life together. </p>
+            </div>
+        </div>
+    </main>
+
+    <footer style=" background-color: lightblue">
+        Author: John Sherloun Espero <br>
+        &copy; COPYRIGHT REVERSED (2024) <br>
+        <small><a href="email"> esperojohnsherloun@gmail.com </a>
+      </footer>
+</body>
+
+</html>
