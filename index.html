@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Loun.Icon 
-    </title>
+    <title>Loun.Icon</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+    <style> 
+       .chatbot { font-family: 'Poppins', sans-serif; } 
+    </style>
 </head>
 
 <body>
@@ -62,6 +65,43 @@
               I specialize in logo designs.  I love bringing concepts to life. </p>
             </div>
         </div>
+
+        <script type="module" class="chatbox">
+            import Chatbox from 'https://cdn.jsdelivr.net/npm/@chaindesk/embeds@latest/dist/chatbox/index.js';
+          
+            const widget = await Chatbox.initBubble({
+              agentId: 'cm4awbwjf0lk7q30mzovsl5m4',
+              
+              // optional 
+              // If provided will create a contact for the user and link it to the conversation
+              contact: {
+                firstName: 'John',
+                lastName: 'Doe',
+                email: 'customer@email.com',
+                phoneNumber: '+33612345644',
+                userId: '42424242',
+              },
+              // optional
+              // Override initial messages
+              initialMessages: [
+                'Hello Georges how are you doing today?',
+                'How can I help you ?',
+              ],
+              // optional
+              // Provided context will be appended to the Agent system prompt
+              context: "The user you are talking to is John. Start by Greeting him by his name.",
+            });
+          
+            // open the chat bubble
+            widget.open();
+          
+            // close the chat bubble
+            widget.close()
+          
+            // or 
+            widget.toggle()
+          </script>
+
     </main>
     <br>
     
