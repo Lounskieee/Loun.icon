@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Loun.icon | Portfolio</title>
+    <link rel="shortcut icon" type="x-icon" href="images/image 1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style> 
+       .chatbot { font-family: 'Poppins', sans-serif; } 
+
+       /* ABOUT SECTION SCROLLABLE BOX */
+        .scroll-box {
+            max-height: 350px;        /* Set how tall the scroll area should be */
+            overflow-y: auto;         /* Enables vertical scrolling */
+            padding-right: 10px;      /* Prevent text from touching the scrollbar */
+        }
+
+        /* Optional: smooth scrollbar */
+        .scroll-box::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scroll-box::-webkit-scrollbar-thumb {
+            background: aquamarine;
+            border-radius: 10px;
+        }
+
+        .sidebar li,
+        .nav-links li {
+            list-style: none;      /* removes bullet */
+        }
+
+        .sidebar li::marker,
+        .nav-links li::marker {
+            display: none;         /* fully hides ::marker */
+        }
+
+        .animated-words {
+            margin-right: 30px;
+            position: relative;
+            margin-left: 5px;
+            width: 10px; /* adjust width to fit longest word */
+            height: 1em;
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        .animated-words span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: slideWord 8s infinite;
+            font-weight: 700;
+            color: aquamarine; /* highlight color */
+        }
+
+        .animated-words span:nth-child(1) { animation-delay: 0s; }
+        .animated-words span:nth-child(2) { animation-delay: 2s; }
+        .animated-words span:nth-child(3) { animation-delay: 4s; }
+        .animated-words span:nth-child(4) { animation-delay: 6s; }
+
+        @keyframes slideWord {
+            0% { opacity: 0; transform: translateY(100%); }
+            10% { opacity: 1; transform: translateY(0); }
+            25% { opacity: 1; transform: translateY(0); }
+            35% { opacity: 0; transform: translateY(-100%); }
+            100% { opacity: 0; transform: translateY(-100%); }
+        }
+
+/* Hide dropdown menu initially */
+.dropdown-menu {
+    display: none;
+    list-style: none;
+    padding: 10px;
+    margin: 5px 0 0 0;
+    background-color: #111;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Dropdown items */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(101, 255, 252, 0.2);
+}
+
+
+
+    </style>
+</head>
+
+<body>
+<!-- Preloader -->
+    <div id="preloader"></div>
+
+    <header class="header" style=" backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">
+        <div class="logo">
+          <a href="#"><img src="images/image 1.png" alt="logo"><span style="color: rgb(230, 225, 214);">Loun.icon</span><span style="color:rgba(101, 255, 219, 1); margin-left: 8px;">Portfolio</span></a>
+        </div>
+        <nav class="navbar">
+            <ul class="pcbar">
+
+                <li class="hideOnMobile"><a href="#home">Home</a></li>
+
+                <!-- About Dropdown -->
+                <li class="dropdown hideOnMobile">
+                    <a href="#about" class="dropdown-toggle">About ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#about">Me</a></li>
+                        <li><a href="#about-loun-icon">Loun.icon</a></li>
+                        <li><a href="#about-loun-icon-dev">Loun.icon.dev</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="hideOnMobile"><a href="#services_type">Project Gallery</a></li>
+                <li class="hideOnMobile"><a href="#more">Contacts</a></li>
+
+                <li onclick=showSidebar()>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="sidebar">
+                <li onclick="hideSidebar()">
+                    <button class="close-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                    </button>
+                </li>
+                <a href="#home">Home</a>
+                <a href="#about">About Me</a>
+                <a href="#about-loun-icon">About Loun.icon</a>
+                <a href="#about-loun-icon-dev">About Loun.icon.dev</a>
+                <a href="#services_type">Project Gallery</a>
+                <a href="#more">Contacts</a>
+            </ul>
+        </nav>
+        <script>
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default link behavior
+                const menu = this.nextElementSibling;
+                if (menu.style.display === 'block') {
+                    menu.style.display = 'none';
+                } else {
+                    menu.style.display = 'block';
+                }
+            });
+        });
+        </script>
+
+
+        <script>
+            function showSidebar(){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+            function hideSidebar(){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+
+        </script>
+
+    </header>
+
+    <main>
+    <section id="home">
+        <div class="highlight">
+            <h4>
+                START YOUR OWN 
+                <span class="animated-words">
+                    <span> BRAND</span>
+                    <span> BUSINESS</span>
+                    <span> IDENTITY</span>
+                    <span> UNIQUENESS</span>
+                </span>
+            </h4>
+            <br>
+            <a style="font-family: 'Poppins', sans-serif; font-size: clamp(1.2vmin, 45vh, 2.4vmax);">with</a>
+            <a style="color: aquamarine;">LOUN.ICON</a>
+        </div>
+    </section>
+
+
+     <!-- ABOUT -->
+       <section id="about">
+        <div class="about-content">
+            
+            <div class="about-text">
+                <h1>ABOUT <h2>John Sherloun</h2></h1>
+
+                <div class="word scroll-box">
+                    <p><br><b style="color: aquamarine;">JOHN SHERLOUN ESPERO</b><br>
+                        Passionate Graphic Designer | Specialization in Logo design | Free-hand Artist
+                        <br><br>
+
+                        <b style="color: aquamarine;">Who Am I?</b><br>
+                        "I’m John Sherloun, a dedicated graphic designer with a flair for transforming ideas into captivating visuals.
+                        My journey began by coincidence, as I was just starting to learn video editing. For me, logo design is much
+                        easier than video editing, but creating and building ideas is the harder part. I believe it’s up to you to
+                        push yourself to the limit to create IDEALISTIC AND UNIQUE designs."
+                        <br><br>
+
+                        <b style="color: aquamarine;">What Drives Me?</b><br>
+                        • Creativity: I thrive on pushing boundaries and thinking outside the box.<br>
+                        • Purpose: Design isn’t just about aesthetics; it’s about solving problems.<br>
+                        • Color Obsessed: Colors have a language of their own.
+                        <br><br>
+
+                        <b style="color: aquamarine;">My Superpowers:</b><br>
+                        • Attention to Detail: Pixel-perfect precision.<br>
+                        • Versatility: I adapt my style to any project.<br>
+                        • Collaboration: I thrive in creative partnerships.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="about-image">
+                <img src="images/Gemini_Generated_Image_x38i7kx38i7kx38i-removebg-preview.png" alt="JDO Dental Team">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+       <section id="about-loun-icon">
+        <div class="about-content">
+            
+            <div class="about-text">
+                <h1>ABOUT <h2>Loun.icon</h2></h1>
+
+                <div class="word scroll-box">
+                    <p> <br><b style="color: aquamarine;">LOUN.ICON</b> <br>
+                    At Loun.icon, we believe in the power of visual narratives to captivate, inspire, and communicate. Our team of innovative designers transforms ideas into stunning visuals, crafting bespoke designs that resonate and endure. From striking logos to immersive brand identities, we are dedicated to delivering exceptional design solutions tailored to your unique vision.
+                    <br>
+                    <br>
+                    <b style="color: aquamarine;">OUR SERVICES</b><br>
+                    <b>• Logo Design:</b> Crafting iconic logos that capture the essence of your brand.<br>
+                    <b>• Brand Identity:</b> Developing cohesive visual identities that tell your story.<br>
+                    <b>• Web Design:</b> Creating visually engaging and user-friendly websites.<br>
+                    <b>• Print Design:</b> Designing impactful print materials, from brochures to business cards.<br>
+                    <b>• Illustration:</b> Bringing your concepts to life with custom illustrations.<br>
+                    <br>
+                    <b style="color: aquamarine;">Why Choose Loun.Icon?</b>
+                    <br>
+                    • Creativity: Our designs are fueled by creativity and innovation.
+                    <br>
+                    • Quality: We prioritize excellence and attention to detail in every project.
+                    <br>
+                    • Collaboration: We work closely with you to ensure your vision is realized.
+                    <br>
+                    • Timeliness: We deliver outstanding results within your deadlines.
+                    <br>
+                    <br>
+                    <i style="color: aqua;">Elevate your brand with Loun.icon, where every design is a masterpiece. Let's transform your vision into reality.</i><br>
+                    <br>
+                    </p>
+                </div>
+                <a href="#services" class="about-btn">Explore Our Projects</a>
+            </div>
+
+            <div class="about-image">
+                <img src="images/loun.icon.jpg" alt="JDO Dental Team">
+            </div>
+
+        </div>
+    </section>
+
+        <!-- ABOUT -->
+       <section id="about-loun-icon-dev">
+        <div class="about-content">
+            
+            <div class="about-text">
+                <h1>ABOUT <h2>Loun.icon.dev</h2></h1>
+
+                <div class="word scroll-box">
+                    <p><br><b style="color: aquamarine;">LOUN.ICON.DEV</b><br>
+                    At Loun.icon.dev, we believe in the power of clean, functional, and user-focused web experiences. Our mission is to transform ideas into visually appealing and intuitive digital solutions that engage, inspire, and perform. From responsive websites to dynamic web applications, we craft digital experiences tailored to your goals.<br><br>
+
+                    <b style="color: aquamarine;">OUR SERVICES</b><br>
+                    <b>• UI/UX Design:</b> Creating intuitive interfaces and seamless user journeys.<br>
+                    <b>• Web Development:</b> Building responsive, high-performance websites and apps.<br>
+                    <b>• Website Design:</b> Designing visually compelling and user-friendly layouts.<br>
+                    <b>• Branding for Web:</b> Ensuring your online presence is consistent and professional.<br>
+                    <b>• Web Optimization:</b> Fast, secure, and SEO-friendly solutions for all platforms.<br><br>
+
+                    <b style="color: aquamarine;">Why Choose Loun.icon.dev?</b><br>
+                    • Creativity: We craft engaging interfaces that captivate users.<br>
+                    • Quality: Pixel-perfect designs with attention to detail.<br>
+                    • Collaboration: We work closely with clients to meet their vision.<br>
+                    • Efficiency: Timely delivery without compromising quality.<br><br>
+
+                     <b style="color: aquamarine;">Programming Tools</b><br>
+                    • <i class="fab fa-php" style="color:aqua;"></i> PHP<br>
+                    • <i class="fab fa-html5" style="color:aqua;"></i> HTML, 
+                    <i class="fab fa-css3-alt" style="color:aqua;"></i> CSS, 
+                    <i class="fab fa-js" style="color:aqua;"></i> JS<br>
+                    • <i class="fas fa-database" style="color:aqua;"></i> MySQL Database<br><br>
+
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="about-image">
+                <img src="images/loun.icon1.jpg" alt="loun.icon">
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SERVICES -->
+    <section id="services_type">
+
+        <div class="title">
+            <h2>I</h2>
+            <h1>LOUN.ICON PROJECT GALLERY</h1>
+            <a>Services that will make you smile</a>
+
+            <h3>SMALL BUSINESS PROJECT</h3>
+            <div class="slider-container">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/Slide7.JPG">
+                    <img src="images/Slide8.JPG">
+                    <img src="images/Slide9.JPG">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="title">
+            <h3>ALTEK WATERPROOFING SOLUTION</h3>
+            <div class="slider-container">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/Slide10.JPG">
+                    <img src="images/Slide11.JPG">
+                    <img src="images/Slide12.JPG">
+                    <img src="images/Slide13.JPG">
+                    <img src="images/Slide14.JPG">
+                    <img src="images/Slide15.JPG">
+                    <img src="images/Slide16.jpg">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="title">
+            <h3>GENTIKO MANILA</h3>
+            <div class="slider-container">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/Slide17.JPG">
+                    <img src="images/Slide18.JPG">
+                    <img src="images/Slide19.JPG">
+                    <img src="images/Slide20.JPG">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="title">
+            <h3>CLASSIC GENERATION</h3>
+            <div class="slider-container">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/Slide21.JPG">
+                    <img src="images/Slide22.JPG">
+                    <img src="images/Slide23.JPG">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="title">
+            <h3>AMUN FRAGRANCE</h3>
+            <div class="slider-container">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/Slide24.JPG">
+                    <img src="images/Slide25.JPG">
+                    <img src="images/Slide26.JPG">
+                    <img src="images/Slide27.JPG">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="title">
+            <h3>RANDOM WORK</h3>
+            <div class="slider-container">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/Slide28.JPG">
+                    <img src="images/Slide29.JPG">
+                    <img src="images/Slide30.JPG">
+                    <img src="images/Slide31.JPG">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+        </div>
+
+    </section>
+
+
+    <style>
+        /* Slider Wrapper */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            margin: 25px auto;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        /* Image Track */
+        .slider {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        /* Images */
+        .slider img {
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Arrow Buttons */
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.45);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 26px;
+            z-index: 10;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .slide-btn:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .slide-btn.left { left: 12px; }
+        .slide-btn.right { right: 12px; }
+
+        /* Mobile */
+        @media(max-width: 600px) {
+            .slide-btn {
+                font-size: 20px;
+                padding: 8px;
+            }
+            .slider-container {
+                max-width: 100%;
+            }
+        }
+    
+        /* FIX: Prevent global img CSS from breaking the slider */
+        .slider img {
+            display: block !important;
+            width: 100% !important;
+            height: auto !important;
+            margin: 0 !important;
+            border-radius: 10px !important;
+            border: none !important;
+        }
+
+    </style>
+
+<script>
+document.querySelectorAll('.slider-container').forEach(container => {
+    const slider = container.querySelector('.slider');
+    const images = slider.querySelectorAll('img');
+    let index = 0;
+
+    const updateSlide = () => {
+        slider.style.transform = `translateX(${-index * 100}%)`;
+    };
+
+    container.querySelector('.left').onclick = () => {
+        index = index > 0 ? index - 1 : images.length - 1;
+        updateSlide();
+    };
+
+    container.querySelector('.right').onclick = () => {
+        index = index < images.length - 1 ? index + 1 : 0;
+        updateSlide();
+    };
+});
+</script>
+
+
+
+
+    </section>
+    <section id="more">
+        <footer class="footer">
+            <div class="footer-container">
+
+                    <!-- Clinic Info -->
+                <div class="footer-section contact-info">
+                <img src="images/image 1.png" alt="JDO Dental Clinic Logo" class="footer-logo">
+                <h2>Loun.icon</h2>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:loun.icon001@gmail.com">loun.icon001@gmail.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Manila, Philippines</p>
+
+                </div>
+
+
+                <!-- Quick Links -->
+                <div class="footer-section quick-links">
+                <h2><i class="fas fa-link"></i> Quick Links</h2>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#services_type"><i class="fas fa-images"></i> Project Gallery</a></li>
+                    <li><a href="#footer"><i class="fas fa-ellipsis-h"></i> More</a></li>
+                </ul>
+                </div>
+
+                <!-- Social Media -->
+                <div class="footer-section social-media">
+                    <h2><i class="fas fa-share-alt"></i> Follow Us</h2>
+
+                    <div class="social-icons">
+                        <div class="social-item">
+                            <a href="https://www.facebook.com/Loun.icon" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Loun.icon</span>
+                            </a>
+                        </div>
+
+                        <div class="social-item">
+                            <a href="https://www.facebook.com/profile.php?id=100086265412769" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Loun.icon.dev</span>
+                            </a>
+                        </div>
+
+                        <div class="social-item">
+                            <a href="https://www.instagram.com/loun.icon/" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                                <span>@loun.icon</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Developer Info -->
+                <div class="footer-section developer">
+                <h2><i class="fas fa-code"></i> Developed By</h2>
+                <div class="developer-info">
+                    <img src="images/Gemini_Generated_Image_x38i7kx38i7kx38i-removebg-preview.png" alt="Developer Logo">
+                    <a href="https://www.facebook.com/Lounskieee#" target="_blank">John Sherloun Espero</a>
+                </div>
+
+                <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i> Back to Top</button>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>Loun.icon™ 2021</p>
+                <p>© 2025 Loun.icon | All Rights Reserved</p>
+            </div>
+            </footer>
+        </section>
+    </main>
+
+ <script type="module" class="chatbox">
+  import Chatbox from 'https://cdn.jsdelivr.net/npm/@chaindesk/embeds@latest/dist/chatbox/index.js';
+
+  const widget = await Chatbox.initBubble({
+    agentId: 'cm4awbwjf0lk7q30mzovsl5m4',
+    contact: {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'customer@email.com',
+      phoneNumber: '+33612345644',
+      userId: '42424242',
+    },
+    initialMessages: [
+      'Hello Georges how are you doing today?',
+      'How can I help you ?',
+    ],
+    context: "The user you are talking to is Sir/Ma'am. Start by Greeting him by his name.",
+  });
+
+  widget.open();
+  widget.close();
+  widget.toggle();
+</script>
+
+<style>
+chatbox-bubble, 
+chatbox-launcher, 
+iframe[src*="chaindesk"] {
+    border: 1px solid white !important;
+    border-radius: 12px !important;
+}
+</style>
+
+
+<script>
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+
+<script>
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".pcbar a, .sidebar a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  const scrollY = window.scrollY;
+  const pageHeight = document.body.scrollHeight;
+  const viewportHeight = window.innerHeight;
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120; 
+    const sectionHeight = section.offsetHeight;
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+
+  if (window.innerHeight + scrollY >= pageHeight - 10) {
+    current = "more";
+  }
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+<script>
+    function togglePassword(icon) {
+        const input = icon.closest('.input-group').querySelector('input');
+        
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        }
+    }
+</script>
+
+<script>
+  const loader = document.getElementById("preloader");
+
+  function hideLoader() {
+    loader.classList.add("fade-out");
+  }
+
+
+  window.addEventListener("load", hideLoader);
+  document.addEventListener("DOMContentLoaded", hideLoader);
+
+  setTimeout(hideLoader, 3000);
+
+  loader.addEventListener("transitionend", () => {
+    loader.style.display = "none";
+  });
+</script>
+
+
+</body>
+</html>
