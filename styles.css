@@ -245,7 +245,7 @@ img {
 
 @media (max-width: 576px) {
     .highlight h4 {
-        font-size: clamp(14px, 4vw, 20px); /* match smaller mobile animated words */
+        font-size: clamp(14px, 6vw, 22px);/* match smaller mobile animated words */
     }
 }
 
@@ -276,10 +276,10 @@ img {
     }
     .animated-words {
         width: 120px;
-        font-size: clamp(14px, 4vw, 20px);  /* same as h4 */
+        font-size: clamp(14px, 6vw, 22px);  /* same as h4 */
     }
     .highlight h4 {
-        font-size: clamp(14px, 4vw, 20px);  /* synced with animated words */
+        font-size: clamp(14px, 6vw, 22px);  /* synced with animated words */
     }
     .highlight-text {
         font-size: clamp(10px, 4vw, 16px);
@@ -340,7 +340,11 @@ img {
 #about {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(101, 255, 240, 0.8));
+    background: linear-gradient(
+        to bottom,
+        rgb(0, 164, 147) 0%,
+        rgb(0, 0, 0) 70%
+    );
     backdrop-filter: blur(6px);
     display: flex;
     align-items: center;
@@ -349,10 +353,11 @@ img {
     box-sizing: border-box;
 }
 
+
 #about-loun-icon {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(to bottom,  rgba(101, 255, 240, 0.8));
+    background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 164, 147));
     backdrop-filter: blur(6px);
     display: flex;
     align-items: center;
@@ -364,7 +369,7 @@ img {
 #about-loun-icon-dev {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(to bottom, rgba(101, 255, 240, 0.8),rgb(0, 0, 0) );
+    background: linear-gradient(to bottom,  rgb(0, 164, 147) );
     backdrop-filter: blur(6px);
     display: flex;
     align-items: center;
@@ -470,10 +475,24 @@ img {
     flex-wrap: wrap;
 }
 
-#services_type{
+#services_loun_dev{
+    background-color: rgb(0, 164, 147);
+    padding: 0 0 100px 0;
+}
+
+#services_loun_dev .title {
+    background-color: rgb(0, 164, 147);
+    margin-top: 0;
+    padding: 7px 20px;
+    text-align: center;
+}
+
+
+#services_loun{
     background-color: black;
     padding: 0 0 100px 0;
 }
+
 
 .service  {
     width: 300px;
@@ -589,15 +608,27 @@ img {
 @media (max-width: 1200px) and (min-width: 900px) {
 
   #home {
-    height: 90vh; /* full screen */
+    height: 100vh; /* full screen */
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
   }
 
+  #about-loun-icon { 
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(0, 164, 147));
+}
+
+  #about-loun-icon-dev { 
+    background-image: linear-gradient( rgb(0, 164, 147));
+}
+
   #about { 
-    background-image: linear-gradient(rgb(0, 0, 0), rgb(101, 255, 240));
+    background-image:linear-gradient(
+        to bottom,
+        rgb(0, 164, 147) 0%,
+        rgb(0, 0, 0) 70%
+    );
 }
 
 }
@@ -605,28 +636,40 @@ img {
 @media (max-width: 991px) and (min-width: 768px) {
 
   #home {
-    height: 80vh;
+    height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
   }
+  #about-loun-icon { 
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(0, 164, 147));
+}
+  #about-loun-icon-dev { 
+    background-image: linear-gradient(rgb(0, 164, 147));
+}
   #about { 
-    background-image: linear-gradient(rgb(0, 0, 0), rgb(101, 255, 240));
+    background-image: linear-gradient(rgb(0, 164, 147), rgb(0, 0, 0));
 }
 }
 
 @media (max-width: 767px) and (min-width: 601px) {
 
   #home {
-    height: 70vh;
+    height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
   }
+  #about-loun-icon { 
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(0, 164, 147));
+}
+  #about-loun-icon-dev { 
+    background-image: linear-gradient(rgb(0, 164, 147));
+}
   #about { 
-    background-image: linear-gradient(rgb(0, 0, 0), rgb(101, 255, 240));
+    background-image: linear-gradient(rgb(0, 164, 147), rgb(0, 0, 0));
 }
 }
 
@@ -637,15 +680,25 @@ img {
   margin-top: -160px;
  }
   #home {
-    height: 70vh;
+    height: 100vh;
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
   }
+  #about-loun-icon { 
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(0, 164, 147));
+}
+  #about-loun-icon-dev { 
+    background-image: linear-gradient(rgb(0, 164, 147));
+}
   #about { 
-    background-image: linear-gradient(rgb(0, 0, 0),rgb(101, 255, 240));
+    background-image: linear-gradient(
+        to bottom,
+        rgb(0, 164, 147) 0%,
+        rgb(0, 0, 0) 70%
+    );
 }
 }
 
