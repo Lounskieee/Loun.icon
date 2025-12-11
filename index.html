@@ -274,20 +274,21 @@
   font-size:14px;
 }
 
-.hist-bar{
-  flex:1;
-  background:#eef2f7;
-  border-radius:999px;
-  overflow:hidden;
-  height:12px;
+.hist-bar {
+  flex: 1;
+  background: #eef2f7;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 12px;
 }
 
-.hist-fill{
-  height:100%;
-  background:linear-gradient(90deg,var(--accent),#ffb400);
-  width:0%;
+.hist-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ffb400);
+  width: 0%;
+  transition: width 0.5s ease;
 }
-
+        
 .hist-count{
   width:48px;
   text-align:right;
@@ -1305,4 +1306,5 @@ aboutSections.forEach(section => observer.observe(section));
 
 </body>
 </html>
+
 
