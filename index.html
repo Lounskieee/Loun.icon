@@ -836,11 +836,9 @@ footer{
 </style>
 
 <script type="module">
-// Firebase imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
 
-// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBShC2hmWsU2xV5AG2HDpYUSnZHC64C9vM",
   authDomain: "ratings-7d5fe.firebaseapp.com",
@@ -852,11 +850,10 @@ const firebaseConfig = {
   measurementId: "G-PEYZN82DZD"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const ratingsRef = ref(database, 'ratings');
 
-// UI elements
 const avgDisplay = document.getElementById('avgDisplay');
 const countDisplay = document.getElementById('countDisplay');
 const starsFront = document.getElementById('starsFront');
@@ -876,15 +873,10 @@ const fillEls = [null,
   document.getElementById('fill5')
 ];
 
-// Reference to "ratings" in DB
-const ratingsRef = ref(database, 'ratings');
-
-// Add a new rating
 function addRating(value) {
   push(ratingsRef, { value: value, timestamp: Date.now() });
 }
 
-// Update UI
 function updateUI(snapshot) {
   const ratings = [];
   snapshot.forEach(child => ratings.push(child.val().value));
@@ -905,35 +897,29 @@ function updateUI(snapshot) {
   }
 }
 
-// Listen for live updates
 onValue(ratingsRef, updateUI);
 
-// Handle rating buttons
 buttons.forEach(btn => {
   const value = Number(btn.dataset.value);
 
-  // Hover preview
   btn.addEventListener('mouseenter', () => {
     starsFront.style.width = (value/5*100) + '%';
   });
   btn.addEventListener('mouseleave', () => {
-    // Restore actual average
-    // Will automatically update from Firebase live listener
+    // revert to live average (updates automatically)
   });
 
-  // Click to rate
   btn.addEventListener('click', () => {
     if(localStorage.getItem('hasRated') === 'true'){
       alert('You already rated!');
       return;
     }
     addRating(value);
-    localStorage.setItem('hasRated','true'); // prevent double vote
+    localStorage.setItem('hasRated','true');
     alert('Thanks for your rating!');
   });
 });
 </script>
-
 
     <style>
     .title a {
@@ -1319,3 +1305,4 @@ aboutSections.forEach(section => observer.observe(section));
 
 </body>
 </html>
+
