@@ -100,7 +100,284 @@
     background-color: rgba(101, 255, 252, 0.2);
 }
 
+/* ABOUT BASE LAYOUT */
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 5%;
+    opacity: 0;                 /* hidden by default */
+    transform: translateY(40px); /* slight downward offset */
+    transition: 0.8s ease;
+}
 
+/* When visible on scroll */
+.about-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Text & Image */
+.about-text {
+    flex: 1;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 15px;
+}
+
+/* Optional reversed layout */
+.about-content.reverse {
+    flex-direction: row-reverse;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .about-content,
+    .about-content.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        width: 90%;
+    }
+}
+
+.sidebar hr {
+    width: 100%;
+    border: none;
+    border-top: 2px solid white;
+    margin: 0;
+    opacity: 1;
+    display: block;
+}
+
+:root{
+  --accent:#ffb400;
+  --muted:#6b7280;
+}
+
+.card{
+  background:rgb(165, 224, 219);
+  padding:30px;
+  box-shadow:0 6px 20px rgba(15,23,42,0.08);
+  margin-bottom:10px;
+  width:100%;
+  margin-bottom:-10px;
+  box-sizing:border-box;
+}
+
+.row{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.summary{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.avg{
+  font-size:40px;
+  font-weight:700;
+  line-height:1;
+}
+
+.meta{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.stars{
+  position:relative;
+  font-size:28px;
+  line-height:1;
+  display:inline-block;
+  direction:ltr;
+}
+
+.stars .back,
+.stars .front{
+  display:block;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.stars .back{
+  color:#8c8e91;
+}
+
+.stars .front{
+  position:absolute;
+  left:0;
+  top:0;
+  color:var(--accent);
+  pointer-events:none;
+}
+
+.rate-control{
+  display:inline-block;
+}
+
+.rate-control button{
+  background:none;
+  border:0;
+  padding:6px 6px;
+  font-size:32px;
+  cursor:pointer;
+}
+
+.rate-control button:focus{
+  outline:2px solid rgba(59,130,246,0.35);
+  border-radius:6px;
+}
+
+.details{
+  margin-top:16px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.hist{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  width:100%;
+  max-width:320px;
+}
+
+.hist-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.hist-label{
+  width:28px;
+  text-align:right;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.hist-bar{
+  flex:1;
+  background:#eef2f7;
+  border-radius:999px;
+  overflow:hidden;
+  height:12px;
+}
+
+.hist-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--accent),#ffb400);
+  width:0%;
+}
+
+.hist-count{
+  width:48px;
+  text-align:right;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.actions{
+  margin-top:16px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:8px 12px;
+  border-radius:8px;
+  border:0;
+  cursor:pointer;
+}
+
+.btn.secondary{
+  background:#eef2f7;
+  color:#0f172a;
+}
+
+.btn.ghost{
+  background:transparent;
+  border:1px solid #e6eef8;
+}
+
+footer{
+  margin-top:10px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Mobile adjustments */
+@media (max-width:680px){
+  .row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .summary{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .avg{
+    font-size:32px;
+  }
+
+  .stars{
+    font-size:24px;
+  }
+
+  .rate-control button{
+    font-size:28px;
+    padding:4px 4px;
+  }
+
+  .hist{
+    width:100%;
+    max-width:none;
+  }
+
+  .details{
+    gap:12px;
+  }
+}
+
+.star-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  user-select: none;
+}
+
+.star-btn button {
+  font-size: 32px; /* or adjust to your design */
+  padding: 0;
+  margin: 0;
+}
+.star-number {
+  margin-top: 2px;
+  color: var(--muted);
+}
 
     </style>
 </head>
@@ -122,14 +399,20 @@
                 <li class="dropdown hideOnMobile">
                     <a href="#about" class="dropdown-toggle">About ▾</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#about">Me</a></li>
                         <li><a href="#about-loun-icon">Loun.icon</a></li>
                         <li><a href="#about-loun-icon-dev">Loun.icon.dev</a></li>
+                        <li><a href="#about">Me</a></li>
                     </ul>
                 </li>
 
+                <li class="dropdown hideOnMobile">
+                    <a href="#services_type" class="dropdown-toggle">Project Gallery ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#services_loun">Loun.icon</a></li>
+                        <li><a href="#services_loun_dev">Loun.icon.dev</a></li>
+                    </ul>
+                </li>
 
-                <li class="hideOnMobile"><a href="#services_type">Project Gallery</a></li>
                 <li class="hideOnMobile"><a href="#more">Contacts</a></li>
 
                 <li onclick=showSidebar()>
@@ -146,10 +429,14 @@
                     </button>
                 </li>
                 <a href="#home">Home</a>
-                <a href="#about">About Me</a>
+                <hr>
                 <a href="#about-loun-icon">About Loun.icon</a>
                 <a href="#about-loun-icon-dev">About Loun.icon.dev</a>
-                <a href="#services_type">Project Gallery</a>
+                <a href="#about">About Me</a>
+                <hr>
+                <a href="#services_loun">Gallery Loun.icon</a>
+                <a href="#services_loun_dev">Gallery Loun.icon.dev</a>
+                <hr>
                 <a href="#more">Contacts</a>
             </ul>
         </nav>
@@ -201,53 +488,10 @@
     </section>
 
 
-     <!-- ABOUT -->
-       <section id="about">
-        <div class="about-content">
-            
-            <div class="about-text">
-                <h1>ABOUT <h2>John Sherloun</h2></h1>
-
-                <div class="word scroll-box">
-                    <p><br><b style="color: aquamarine;">JOHN SHERLOUN ESPERO</b><br>
-                        Passionate Graphic Designer | Specialization in Logo design | Free-hand Artist
-                        <br><br>
-
-                        <b style="color: aquamarine;">Who Am I?</b><br>
-                        "I’m John Sherloun, a dedicated graphic designer with a flair for transforming ideas into captivating visuals.
-                        My journey began by coincidence, as I was just starting to learn video editing. For me, logo design is much
-                        easier than video editing, but creating and building ideas is the harder part. I believe it’s up to you to
-                        push yourself to the limit to create IDEALISTIC AND UNIQUE designs."
-                        <br><br>
-
-                        <b style="color: aquamarine;">What Drives Me?</b><br>
-                        • Creativity: I thrive on pushing boundaries and thinking outside the box.<br>
-                        • Purpose: Design isn’t just about aesthetics; it’s about solving problems.<br>
-                        • Color Obsessed: Colors have a language of their own.
-                        <br><br>
-
-                        <b style="color: aquamarine;">My Superpowers:</b><br>
-                        • Attention to Detail: Pixel-perfect precision.<br>
-                        • Versatility: I adapt my style to any project.<br>
-                        • Collaboration: I thrive in creative partnerships.
-                    </p>
-                </div>
-
-            </div>
-
-            <div class="about-image">
-                <img src="images/Gemini_Generated_Image_x38i7kx38i7kx38i-removebg-preview.png" alt="JDO Dental Team">
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-       <section id="about-loun-icon">
-        <div class="about-content">
-            
-            <div class="about-text">
-                <h1>ABOUT <h2>Loun.icon</h2></h1>
+<section id="about-loun-icon">
+    <div class="about-content">
+        <div class="about-text"> 
+             <h1>ABOUT <h2>Loun.icon</h2></h1>
 
                 <div class="word scroll-box">
                     <p> <br><b style="color: aquamarine;">LOUN.ICON</b> <br>
@@ -276,22 +520,18 @@
                     <br>
                     </p>
                 </div>
-                <a href="#services" class="about-btn">Explore Our Projects</a>
-            </div>
-
-            <div class="about-image">
-                <img src="images/loun.icon.jpg" alt="JDO Dental Team">
-            </div>
-
+                <a href="#services_loun" class="about-btn">Explore Our Projects</a>
         </div>
-    </section>
+        <div class="about-image">
+            <img src="images/loun.icon.jpg">
+        </div>
+    </div>
+</section>
 
-        <!-- ABOUT -->
-       <section id="about-loun-icon-dev">
-        <div class="about-content">
-            
-            <div class="about-text">
-                <h1>ABOUT <h2>Loun.icon.dev</h2></h1>
+<section id="about-loun-icon-dev">
+    <div class="about-content">
+        <div class="about-text">
+            <h1>ABOUT <h2>Loun.icon.dev</h2></h1>
 
                 <div class="word scroll-box">
                     <p><br><b style="color: aquamarine;">LOUN.ICON.DEV</b><br>
@@ -316,27 +556,59 @@
                     <i class="fab fa-css3-alt" style="color:aqua;"></i> CSS, 
                     <i class="fab fa-js" style="color:aqua;"></i> JS<br>
                     • <i class="fas fa-database" style="color:aqua;"></i> MySQL Database<br><br>
-
-
                     </p>
                 </div>
-            </div>
-
-            <div class="about-image">
-                <img src="images/loun.icon1.jpg" alt="loun.icon">
-            </div>
-
+                <a href="#services_loun_dev" class="about-btn">Explore Our Projects</a>
         </div>
-    </section>
+        <div class="about-image">
+            <img src="images/loun.icon1.jpg">
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="about-content">
+        <div class="about-text">
+            <h1>ABOUT <h2>John Sherloun</h2></h1>
+
+                <div class="word scroll-box">
+                    <p><br><b style="color: aquamarine;">JOHN SHERLOUN ESPERO</b><br>
+                        Passionate Graphic Designer | Specialization in Logo design | Free-hand Artist
+                        <br><br>
+
+                        <b style="color: aquamarine;">Who Am I?</b><br>
+                        "I’m John Sherloun, a dedicated graphic designer with a flair for transforming ideas into captivating visuals.
+                        My journey began by coincidence, as I was just starting to learn video editing. For me, logo design is much
+                        easier than video editing, but creating and building ideas is the harder part. I believe it’s up to you to
+                        push yourself to the limit to create IDEALISTIC AND UNIQUE designs."
+                        <br><br>
+
+                        <b style="color: aquamarine;">What Drives Me?</b><br>
+                        • Creativity: I thrive on pushing boundaries and thinking outside the box.<br>
+                        • Purpose: Design isn’t just about aesthetics; it’s about solving problems.<br>
+                        • Color Obsessed: Colors have a language of their own.
+                        <br><br>
+
+                        <b style="color: aquamarine;">My Superpowers:</b><br>
+                        • Attention to Detail: Pixel-perfect precision.<br>
+                        • Versatility: I adapt my style to any project.<br>
+                        • Collaboration: I thrive in creative partnerships.
+                    </p>
+        </div>
+        <div class="about-image">
+            <img src="images/Gemini_Generated_Image_x38i7kx38i7kx38i-removebg-preview.png">
+        </div>
+    </div>
+</section>
 
 
     <!-- SERVICES -->
-    <section id="services_type">
+    <section id="services_loun">
 
         <div class="title">
             <h2>I</h2>
-            <h1>LOUN.ICON PROJECT GALLERY</h1>
-            <a>Services that will make you smile</a>
+            <h1>PROJECT GALLERY</h1>
+            <a>Loun.icon</a>
 
             <h3>SMALL BUSINESS PROJECT</h3>
             <div class="slider-container">
@@ -424,8 +696,304 @@
 
     </section>
 
+     <!-- SERVICES -->
+    <section id="services_loun_dev">
+
+        <div class="title">
+            <h2>I</h2>
+            <h1 style="color: aqua;">PROJECT GALLERY</h1>
+            <a>Loun.icon.dev</a>
+
+            <h3 style="color: whitesmoke;">EVENT PLANNER (EventzPlan)</h3>
+            <div class="slider-container-phone">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/dev-1.jpg">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+        </div>
+
+        <div class="title">
+            <h3 style="color: whitesmoke;">TRANSPORTATION CALCULATOR (eCalculate) </h3>
+            <div class="slider-container-phone">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/dev-2.jpeg">
+                    <img src="images/dev-2.1.jpeg">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+             <a href="https://lounskieee.github.io/Espero_Transportation_Method/" class="link-btn">eCalculate Link</a>
+        </div>
+
+        <div class="title">
+            <h3 style="color: whitesmoke;">CAPSTONE PROJECT (Dental Clinic Management System) </h3>
+            <div class="slider-container-phone">
+                <button class="slide-btn left">&#10094;</button>
+                <div class="slider">
+                    <img src="images/dev-3.png">
+                </div>
+                <button class="slide-btn right">&#10095;</button>
+            </div>
+            <a href="https://jdodentalclinic.site/" class="link-btn"> Dental Clinic Link</a>
+        </div>
+
+    </section>
+
+<div class="card" role="region" aria-label="Rating widget">
+  <div class="row">
+    <div class="summary">
+      <div>
+        <div id="avgDisplay" class="avg">0.0</div>
+        <div class="meta">Average rating</div>
+      </div>
+      <div>
+        <div id="starsDisplay" class="stars" aria-hidden="true">
+          <div class="back">★★★★★</div>
+          <div class="front" id="starsFront">★★★★★</div>
+        </div>
+        <div id="countDisplay" class="meta">0 ratings</div>
+      </div>
+    </div>
+
+    <div style="margin-left:auto">
+      <div style="text-align:right">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Rate this:</div>
+        <div class="rate-control" role="radiogroup" aria-label="Rate this item" style="display:flex;gap:6px;justify-content:flex-end;">
+          <div class="star-btn">
+            <button data-value="5" aria-label="Rate 5 stars">☆</button>
+            <div class="star-number">5</div>
+          </div>
+          <div class="star-btn">
+            <button data-value="4" aria-label="Rate 4 stars">☆</button>
+            <div class="star-number">4</div>
+          </div>
+          <div class="star-btn">
+            <button data-value="3" aria-label="Rate 3 stars">☆</button>
+            <div class="star-number">3</div>
+          </div>
+          <div class="star-btn">
+            <button data-value="2" aria-label="Rate 2 stars">☆</button>
+            <div class="star-number">2</div>
+          </div>
+          <div class="star-btn">
+            <button data-value="1" aria-label="Rate 1 star">☆</button>
+            <div class="star-number">1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="details">
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div class="hist">
+        <div style="font-weight:600;margin-bottom:8px">Summary</div>
+        <div class="hist-row"><div class="hist-label">5★</div><div class="hist-bar"><div class="hist-fill" id="fill5"></div></div><div class="hist-count" id="cnt5">0</div></div>
+        <div class="hist-row"><div class="hist-label">4★</div><div class="hist-bar"><div class="hist-fill" id="fill4"></div></div><div class="hist-count" id="cnt4">0</div></div>
+        <div class="hist-row"><div class="hist-label">3★</div><div class="hist-bar"><div class="hist-fill" id="fill3"></div></div><div class="hist-count" id="cnt3">0</div></div>
+        <div class="hist-row"><div class="hist-label">2★</div><div class="hist-bar"><div class="hist-fill" id="fill2"></div></div><div class="hist-count" id="cnt2">0</div></div>
+        <div class="hist-row"><div class="hist-label">1★</div><div class="hist-bar"><div class="hist-fill" id="fill1"></div></div><div class="hist-count" id="cnt1">0</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .stars .front {
+    position:absolute;
+    left:0;
+    top:0;
+    color:var(--accent);
+    pointer-events:none;
+    overflow:hidden;
+    white-space:nowrap;
+    width:0%;
+  }
+
+  .star-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    user-select: none;
+  }
+
+  .star-btn button {
+    font-size: 32px;
+    padding: 0;
+    margin: 0;
+    background:none;
+    border:none;
+    cursor:pointer;
+  }
+
+  .star-number {
+    margin-top: 2px;
+    color: var(--muted);
+  }
+</style>
+
+<script type="module">
+// Firebase imports
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyBShC2hmWsU2xV5AG2HDpYUSnZHC64C9vM",
+  authDomain: "ratings-7d5fe.firebaseapp.com",
+  databaseURL: "https://ratings-7d5fe-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ratings-7d5fe",
+  storageBucket: "ratings-7d5fe.appspot.com",
+  messagingSenderId: "906736193900",
+  appId: "1:906736193900:web:9a064e1959cb7f27a96349",
+  measurementId: "G-PEYZN82DZD"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// UI elements
+const avgDisplay = document.getElementById('avgDisplay');
+const countDisplay = document.getElementById('countDisplay');
+const starsFront = document.getElementById('starsFront');
+const buttons = document.querySelectorAll('.rate-control button');
+const cntEls = [null,
+  document.getElementById('cnt1'),
+  document.getElementById('cnt2'),
+  document.getElementById('cnt3'),
+  document.getElementById('cnt4'),
+  document.getElementById('cnt5')
+];
+const fillEls = [null,
+  document.getElementById('fill1'),
+  document.getElementById('fill2'),
+  document.getElementById('fill3'),
+  document.getElementById('fill4'),
+  document.getElementById('fill5')
+];
+
+// Reference to "ratings" in DB
+const ratingsRef = ref(database, 'ratings');
+
+// Add a new rating
+function addRating(value) {
+  push(ratingsRef, { value: value, timestamp: Date.now() });
+}
+
+// Update UI
+function updateUI(snapshot) {
+  const ratings = [];
+  snapshot.forEach(child => ratings.push(child.val().value));
+
+  const counts = {1:0,2:0,3:0,4:0,5:0};
+  for(const r of ratings){ if(counts[r]) counts[r]++; }
+
+  const total = ratings.length;
+  const avg = total ? ratings.reduce((a,b)=>a+b,0)/total : 0;
+
+  avgDisplay.textContent = avg.toFixed(1);
+  countDisplay.textContent = total + (total === 1 ? ' rating' : ' ratings');
+  starsFront.style.width = (avg/5*100) + '%';
+
+  for(let i=1;i<=5;i++){
+    cntEls[i].textContent = counts[i];
+    fillEls[i].style.width = total ? (counts[i]/total*100)+'%' : '0%';
+  }
+}
+
+// Listen for live updates
+onValue(ratingsRef, updateUI);
+
+// Handle rating buttons
+buttons.forEach(btn => {
+  const value = Number(btn.dataset.value);
+
+  // Hover preview
+  btn.addEventListener('mouseenter', () => {
+    starsFront.style.width = (value/5*100) + '%';
+  });
+  btn.addEventListener('mouseleave', () => {
+    // Restore actual average
+    // Will automatically update from Firebase live listener
+  });
+
+  // Click to rate
+  btn.addEventListener('click', () => {
+    if(localStorage.getItem('hasRated') === 'true'){
+      alert('You already rated!');
+      return;
+    }
+    addRating(value);
+    localStorage.setItem('hasRated','true'); // prevent double vote
+    alert('Thanks for your rating!');
+  });
+});
+</script>
+
 
     <style>
+    .title a {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+    background: aquamarine;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+
+    }
+
+        /* 9:16 Phone Ratio Container */
+.slider-container-phone {
+    position: relative;
+    width: 100%;
+    max-width: 380px; /* phone width */
+    margin: 0 auto;
+    overflow: hidden;
+    aspect-ratio: 9 / 16; /* forces the 9:16 phone shape */
+    border-radius: 14px;
+}
+
+/* Slider inside */
+.slider-container-phone .slider {
+    display: flex;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Images — fill the 9:16 area cleanly */
+.slider-container-phone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* keeps proportions, fills frame */
+    border-radius: 14px;
+}
+
+/* Navigation buttons */
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    z-index: 5;
+}
+
+.slide-btn.left { left: 10px; }
+.slide-btn.right { right: 10px; }
+
         /* Slider Wrapper */
         .slider-container {
             position: relative;
@@ -435,6 +1003,7 @@
             overflow: hidden;
             border-radius: 12px;
         }
+        
 
         /* Image Track */
         .slider {
@@ -497,6 +1066,8 @@
 
     </style>
 
+
+
 <script>
 document.querySelectorAll('.slider-container').forEach(container => {
     const slider = container.querySelector('.slider');
@@ -519,7 +1090,27 @@ document.querySelectorAll('.slider-container').forEach(container => {
 });
 </script>
 
+<script>
+document.querySelectorAll('.slider-container-phone').forEach(container => {
+    const slider = container.querySelector('.slider');
+    const images = slider.querySelectorAll('img');
+    let index = 0;
 
+    const updateSlide = () => {
+        slider.style.transform = `translateX(${-index * 100}%)`;
+    };
+
+    container.querySelector('.left').onclick = () => {
+        index = index > 0 ? index - 1 : images.length - 1;
+        updateSlide();
+    };
+
+    container.querySelector('.right').onclick = () => {
+        index = index < images.length - 1 ? index + 1 : 0;
+        updateSlide();
+    };
+});
+</script>
 
 
     </section>
@@ -529,7 +1120,7 @@ document.querySelectorAll('.slider-container').forEach(container => {
 
                     <!-- Clinic Info -->
                 <div class="footer-section contact-info">
-                <img src="images/image 1.png" alt="JDO Dental Clinic Logo" class="footer-logo">
+                <img src="images/image 1.png" alt="Loun.icon Logo" class="footer-logo">
                 <h2>Loun.icon</h2>
                 <p><i class="fas fa-envelope"></i> <a href="mailto:loun.icon001@gmail.com">loun.icon001@gmail.com</a></p>
                 <p><i class="fas fa-map-marker-alt"></i> Manila, Philippines</p>
@@ -543,7 +1134,7 @@ document.querySelectorAll('.slider-container').forEach(container => {
                 <ul>
                     <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-                    <li><a href="#services_type"><i class="fas fa-images"></i> Project Gallery</a></li>
+                    <li><a href="#services_loun"><i class="fas fa-images"></i> Project Gallery</a></li>
                     <li><a href="#footer"><i class="fas fa-ellipsis-h"></i> More</a></li>
                 </ul>
                 </div>
@@ -705,6 +1296,24 @@ window.addEventListener("scroll", () => {
   loader.addEventListener("transitionend", () => {
     loader.style.display = "none";
   });
+  
+</script>
+
+<script>
+const aboutSections = document.querySelectorAll('.about-content');
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    },
+    { threshold: 0.3 }
+);
+
+aboutSections.forEach(section => observer.observe(section));
 </script>
 
 
